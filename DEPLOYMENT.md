@@ -41,7 +41,7 @@ Your deployed backend exposes:
 
 ## Netlify frontend
 
-Before deploying, edit `frontend/app.js` and replace the fallback URL:
+The frontend is configured to use the Render backend by default:
 
 ```js
 const API_BASE = localStorage.getItem('geoaiApiUrl') || 'https://city-1-6jst.onrender.com';
