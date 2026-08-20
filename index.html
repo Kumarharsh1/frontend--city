@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GeoAI City Operations</title>
+  <meta name="description" content="OpenStreetMap-powered route, connectivity, bottleneck, and accessibility analysis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top"><span class="brand-mark">+</span><span>GeoAI<span class="brand-muted"> / CITY OPS</span></span></a>
+    <div class="status"><span class="status-dot"></span><span id="apiStatus">API not checked</span></div>
+  </header>
+
+  <main id="top" class="shell">
+    <section class="intro">
+      <p class="eyebrow">OPENSTREETMAP INTELLIGENCE</p>
+      <h1>See how a city<br><em>connects.</em></h1>
+      <p class="lede">Explore routes, network health, bottlenecks, and access to essential places anywhere in the world.</p>
+      <button class="why-button" id="whyButton" type="button" aria-haspopup="dialog">Why This Platform? <span aria-hidden="true">&#8599;</span></button>
+    </section>
+
+    <section class="workspace">
+      <nav class="tools" aria-label="Analysis type">
+        <button class="tool active" data-mode="route"><span class="tool-number">01</span><span><b>Emergency route</b><small>Find the shortest drive</small></span></button>
+        <button class="tool" data-mode="connectivity"><span class="tool-number">02</span><span><b>Connectivity</b><small>Measure network density</small></span></button>
+        <button class="tool" data-mode="bottlenecks"><span class="tool-number">03</span><span><b>Busy Intersections</b><small>Find highly connected junctions</small></span></button>
+        <button class="tool" data-mode="accessibility"><span class="tool-number">04</span><span><b>Service Reachability</b><small>Measure reach to a service</small></span></button>
+      </nav>
+
+      <section class="control-panel">
+        <div class="panel-heading"><div><p class="eyebrow">ANALYSIS REQUEST</p><h2 id="modeTitle">Emergency route</h2></div><span class="method">GET</span></div>
+        <form id="analysisForm">
+          <label>City or region<input id="city" name="city" value="Ranchi, India" required placeholder="Paris, France"></label>
+          <div id="routeFields" class="route-fields">
+            <label>Origin<input id="origin" name="origin" value="Ranchi Railway Station" required placeholder="Origin landmark"></label>
+            <label>Destination<input id="destination" name="destination" value="Firayalal Chowk, Ranchi" required placeholder="Destination landmark"></label>
+          </div>
+          <div id="targetField" class="hidden"><label>Target place<input id="target" name="target" placeholder="Hospital, school, or market"></label></div>
+          <button class="submit" type="submit"><span id="submitText">Run route analysis</span><span class="arrow">&#8599;</span></button>
+        </form>
+      </section>
+    </section>
+
+    <section id="resultSection" class="result-section hidden">
+      <div class="result-head"><div><p class="eyebrow">RESULT</p><h2 id="resultTitle">Analysis output</h2></div><a id="mapLink" class="map-link hidden" target="_blank" rel="noreferrer">Open route map &#8599;</a></div>
+      <div id="result" class="result-grid"></div>
+    </section>
+
+    <p id="error" class="error hidden" role="alert"></p>
+  </main>
+  <dialog class="why-modal" id="whyModal" aria-labelledby="whyTitle">
+    <div class="modal-heading">
+      <div><p class="eyebrow">WHY GEOAI CITY OPS</p><h2 id="whyTitle">Practical answers for better-connected cities.</h2></div>
+      <button class="modal-close" id="closeWhy" type="button" aria-label="Close dialog">&times;</button>
+    </div>
+    <div class="why-list">
+      <article><span>01</span><div><h3>Emergency routing</h3><p>Find faster routes for ambulances and fire trucks.</p></div></article>
+      <article><span>02</span><div><h3>Rural connectivity</h3><p>Spot underserved communities with weak road access.</p></div></article>
+      <article><span>03</span><div><h3>Urban hotspots</h3><p>Identify busy intersections across city road networks.</p></div></article>
+      <article><span>04</span><div><h3>Service reach</h3><p>Measure access to hospitals, schools, and markets.</p></div></article>
+    </div>
+  </dialog>
+  <footer><span>GEOAI CITY OPS</span><span>Made by Kumar Harsh · +91-927915796 · kh949118@gmail.com</span><span>Powered by OpenStreetMap + OSMnx</span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
